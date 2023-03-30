@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -33,20 +34,17 @@ export class AppComponent {
   errorMessage: string = "";
   qrCodeDownloadLink: SafeUrl | undefined;
 
+  constructor(private modalService: NgbModal) {}
+  @ViewChild('content') public content: any
 
-  get disableButton() {
-    if (this.ssid == '' && (this.password == '' && this.networkType=='nopass')) {
-      this.ssid == '' ? this.errorMessage = "SSID cannot be empty" : this.errorMessage = 'Password cannot be empty'
-      return;
-    }
-    return false;
-  }
+
 
   onChangeURL(url :SafeUrl) {
     this.qrCodeDownloadLink = url
   }
 
   saveAsImage(parent: any) {
+    this.openDialog(this.content)
     let parentElement = null
 
     if (this.elementType === "canvas") {
@@ -104,4 +102,8 @@ export class AppComponent {
     this.qrCode = `WIFI:T:${this.networkType};S:${this.ssid};P:${this.password};H:${this.hidden};;`
     this.qrLoading = false
   }
+
+  openDialog(content: any) {
+		this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
+	}
 }
