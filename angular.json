@@ -28,6 +28,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/scss/bootstrap.scss",
               "src/styles.scss"
             ],
             "scripts": []
@@ -103,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
