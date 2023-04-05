@@ -60,7 +60,7 @@ export class AppComponent implements OnInit {
       { property: 'og: locale', content: 'en_us' },
       {
         property: 'og: type',
-        content: 'website, QR, WiFi, QR Generator, QR WiFi Generator',
+        content: 'website, QR, WiFi, QR Generator, QR WiFi Generator, WiFi QR Code Generator',
       },
 
       // Twitter cards
